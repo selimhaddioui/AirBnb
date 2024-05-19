@@ -1,0 +1,53 @@
+services:
+  mysql:
+    image: mysql:latest
+    volumes:
+      - airbnb-data:/var/lib/airbnb
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: airbnb_db
+
+  user:
+    build: ./UserService
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/user
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: airbnb_db
+    depends_on:
+      - mysql
+
+  booking:
+    build: ./BookingService
+    ports:
+      - 8081:8080
+    volumes:
+      - ./:/booking
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: airbnb_db
+    depends_on:
+      - mysql
+
+  estate:
+    build: ./EstateService
+    ports:
+      - 8082:8080
+    volumes:
+      - ./:/estate
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: airbnb_db
+    depends_on:
+      - mysql
+
+volumes:
+  airbnb-data:

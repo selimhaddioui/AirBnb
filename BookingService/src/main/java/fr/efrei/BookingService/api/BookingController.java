@@ -17,7 +17,7 @@ public class BookingController {
 
     @GetMapping
     public String getBookings() {
-        return "Booking";
+        return "Booking and now a new message !";
     }
 
     @GetMapping("/Message/{bookingId}")
@@ -27,6 +27,6 @@ public class BookingController {
 
     @GetMapping("/TestRecord")
     public BookingRecord testRecord() {
-        return new BookingRecord("monIdDeProprio", "monIdDeLocataire");
+        return new BookingRecord("monIdDeProprio", "monIdDeLocataire", "monIdDeTenant");
     }
 }
