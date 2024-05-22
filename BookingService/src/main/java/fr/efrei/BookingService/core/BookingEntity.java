@@ -9,14 +9,14 @@ public class BookingEntity {
 
 
     public BookingEntity(String bookingId, String estateId, String tenantId, String bookingStart, String bookingEnd) {
-        this.bookintId = bookingId;
+        this.bookingId = bookingId;
         this.estateId = estateId;
         this.tenantId = tenantId;
         this.bookingStart = bookingStart;
         this.bookingEnd = bookingEnd;
     }
 
-    public String getBookindId() {
+    public String getBookingId() {
         return bookingId;
     }
 
