@@ -4,16 +4,19 @@ public class BookingEntity {
     private String bookingId;
     private String estateId;
     private String tenantId;
-    /* ... */
+    private String bookingStart;
+    private String bookingEnd;
 
-    public BookingEntity(String bookingId, String estateId, String tenantId/*, ... */) {
-        this.bookingId = bookingId;
+
+    public BookingEntity(String bookingId, String estateId, String tenantId, String bookingStart, String bookingEnd) {
+        this.bookintId = bookingId;
         this.estateId = estateId;
         this.tenantId = tenantId;
-        /* ... */
+        this.bookingStart = bookingStart;
+        this.bookingEnd = bookingEnd;
     }
 
-    public String getBookingId() {
+    public String getBookindId() {
         return bookingId;
     }
 
@@ -24,4 +27,7 @@ public class BookingEntity {
     public String getTenantId() {
         return tenantId;
     }
+
+    public String getBookingStart() {return bookingStart;}
+    public String getBookingEnd() {return bookingEnd;}
 }
