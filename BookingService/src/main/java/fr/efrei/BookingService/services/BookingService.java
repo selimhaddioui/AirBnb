@@ -1,12 +1,14 @@
 package fr.efrei.BookingService.services;
 
 import fr.efrei.BookingService.core.BookingEntity;
+import fr.efrei.BookingService.dao.BookingDAO;
 
 public class BookingService {
+
+    private BookingDAO dao;
+
     public BookingEntity book(String estateId, String tenantId) {
-        /* Check for availability */
-        /* Create a booking from DAO */
-        /* return it */
+
         return new BookingEntity("bookingId", estateId, tenantId);
     }
 
