@@ -1,0 +1,21 @@
+<main>
+    <header>
+        <a [routerLink]="['/']">
+            <div class="brand-logo">
+                <img class="brand-logo-picture" ngSrc="/assets/house_searching.svg" alt="logo" aria-hidden="true"
+                     height="453" width="909">
+                <h1 class="brand-logo-title">HairBnb</h1>
+            </div>
+        </a>
+        <div class="icons">
+            <mat-icon svgIcon="rents-icon" matTooltip="Rents" id="rents-icon"></mat-icon>
+            <mat-icon svgIcon="plus-icon" matTooltip="New estate" id="new-estate-icon" [routerLink]="['/create-estate']"></mat-icon>
+            <mat-icon svgIcon="estates-icon" matTooltip="Estates" id="estates-icon"></mat-icon>
+            <app-signup-dialog-trigger></app-signup-dialog-trigger>
+            <app-login-dialog-trigger></app-login-dialog-trigger>
+        </div>
+    </header>
+    <section class="content">
+        <router-outlet/>
+    </section>
+</main>
