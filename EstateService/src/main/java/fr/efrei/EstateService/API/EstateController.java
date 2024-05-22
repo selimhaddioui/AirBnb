@@ -6,29 +6,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/Estate")
+@RequestMapping
 
 public class EstateController {
-
-
-}
-
-
-
-public class BookingController {
-
     @GetMapping
-    public String getBookings() {
-        return "Booking";
+    public String publishEstate() {
+        return "coucou";
     }
 
-    @GetMapping("/Message/{bookingId}")
-    public String getBooking(@PathVariable String bookingId) {
-        return "Booking " + bookingId;
+    @GetMapping("/Message/{estateId}")
+    public String getEstate(@PathVariable String EstateId) {
+        return "Booking " + EstateId;
     }
 
     @GetMapping("/TestRecord")
-    public BookingRecord testRecord() {
-        return new BookingRecord("monIdDeProprio", "monIdDeLocataire");
+    public EstateRecord testRecord() {
+        return new EstateRecord("monIdDeProprio", "monIdDeLocataire");
     }
 }
