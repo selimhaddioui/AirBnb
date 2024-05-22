@@ -14,8 +14,8 @@ public class BookingService {
         this.dao = dao;
     }
 
-    public void book(String bookingId, String estateId, String tenantId) {
-        dao.save(new BookingEntity(bookingId, estateId, tenantId));
+    public void book(String bookingId, String estateId, String tenantId, String bookingStart, String bookingEnd) {
+        dao.save(new BookingEntity(bookingId, estateId, tenantId, bookingStart, bookingEnd));
     }
 
     public void cancel(String bookingId) {
@@ -26,5 +26,9 @@ public class BookingService {
 
     public List<BookingEntity> getBookings(){
         return (List<BookingEntity>) dao.findAll();
+    }
+
+    public void getBooking(String bookingId){
+        dao.findById(bookingId);
     }
 }
