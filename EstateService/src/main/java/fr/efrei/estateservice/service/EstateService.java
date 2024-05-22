@@ -21,4 +21,8 @@ public class EstateService {
     public List<EstateEntity> getEstates() {
         return (List<EstateEntity>) estateRepository.findAll();
     }
+
+    public void deleteEstate(String id) {
+        estateRepository.deleteById(id);
+    }
 }

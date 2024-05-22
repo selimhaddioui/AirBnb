@@ -30,4 +30,10 @@ public class EstateController {
         estateService.createEstate(id);
         return "Go to http://localhost:8082/all to see your new record" ;
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteEstate(@PathVariable String id) {
+        estateService.deleteEstate(id);
+        return "Go to http://localhost:8082/all to see your new record" ;
+    }
 }
