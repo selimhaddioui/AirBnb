@@ -14,7 +14,7 @@ public class EstateService {
         this.estateRepository = estateRepository;
     }
 
-    public void createEstate(String email, String password) {
+    public void createEstate(String id) {
         estateRepository.save(new EstateEntity(id));
     }
 
