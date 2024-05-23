@@ -9,8 +9,14 @@ public class EstateEntity {
     @Id
     private String id;
 
+    private boolean isPublished;
+
     public EstateEntity(String id) {
         this.id = id;
+    }
+
+    public void setPublished(boolean published) {
+        isPublished = published;
     }
 
     public EstateEntity() {

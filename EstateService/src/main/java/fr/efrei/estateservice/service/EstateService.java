@@ -25,4 +25,10 @@ public class EstateService {
     public void deleteEstate(String id) {
         estateRepository.deleteById(id);
     }
+    public void publishEstate(String id) throws Exception {
+        EstateEntity estate = estateRepository.findById(id)
+                .orElseThrow(() -> new Exception("Estate not found with id: " + id));
+        estate.setPublished(true);
+        estateRepository.save(estate);
+    }
 }

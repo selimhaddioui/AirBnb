@@ -1,9 +1,7 @@
 package fr.efrei.estateservice.api;
 
 import fr.efrei.estateservice.service.EstateService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,9 +29,20 @@ public class EstateController {
         return "Go to http://localhost:8082/all to see your new record" ;
     }
 
-    @GetMapping("/delete/{id}")
+    @PutMapping("/publish/{id}")
+    public String publishEstate(@PathVariable String id) throws Exception {
+        estateService.publishEstate(id);
+        return "Go to http://localhost:8082/all to see your updated record" ;
+    }
+
+    /*@GetMapping("/delete/{id}")
     public String deleteEstate(@PathVariable String id) {
         estateService.deleteEstate(id);
         return "Go to http://localhost:8082/all to see your new record" ;
+    }*/
+    @DeleteMapping("/delete/{id}")
+    public String deleteFile(@PathVariable("id") String id) {
+        estateService.deleteEstate(id);
+        return "Estate" + id + "deleted\nGo to http://localhost:8082/all to see your new record";
     }
 }
