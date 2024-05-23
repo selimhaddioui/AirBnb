@@ -1,0 +1,205 @@
+{
+  "estates": [
+      {
+        "id": 0,
+        "name": "Acme Fresh Start Housing",
+        "city": "Chicago",
+        "state": "IL",
+        "photo": "https://angular.io/assets/images/tutorials/faa/bernard-hermant-CLKGGwIBTaY-unsplash.jpg",
+        "availableUnits": 4,
+        "wifi": true,
+        "laundry": true
+      },
+      {
+        "id": 1,
+        "name": "A113 Transitional Housing",
+        "city": "Santa Monica",
+        "state": "CA",
+        "photo": "https://angular.io/assets/images/tutorials/faa/brandon-griggs-wR11KBaB86U-unsplash.jpg",
+        "availableUnits": 0,
+        "wifi": false,
+        "laundry": true
+      },
+      {
+        "id": 2,
+        "name": "Warm Beds Housing Support",
+        "city": "Juneau",
+        "state": "AK",
+        "photo": "https://angular.io/assets/images/tutorials/faa/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg",
+        "availableUnits": 1,
+        "wifi": false,
+        "laundry": false
+      },
+      {
+        "id": 3,
+        "name": "Homesteady Housing",
+        "city": "Chicago",
+        "state": "IL",
+        "photo": "https://angular.io/assets/images/tutorials/faa/ian-macdonald-W8z6aiwfi1E-unsplash.jpg",
+        "availableUnits": 1,
+        "wifi": true,
+        "laundry": false
+      },
+      {
+        "id": 4,
+        "name": "Happy Homes Group",
+        "city": "Gary",
+        "state": "IN",
+        "photo": "https://angular.io/assets/images/tutorials/faa/krzysztof-hepner-978RAXoXnH4-unsplash.jpg",
+        "availableUnits": 1,
+        "wifi": true,
+        "laundry": false
+      },
+      {
+        "id": 5,
+        "name": "Hopeful Apartment Group",
+        "city": "Oakland",
+        "state": "CA",
+        "photo": "https://angular.io/assets/images/tutorials/faa/r-architecture-JvQ0Q5IkeMM-unsplash.jpg",
+        "availableUnits": 2,
+        "wifi": true,
+        "laundry": true
+      },
+      {
+        "id": 6,
+        "name": "Seriously Safe Towns",
+        "city": "Oakland",
+        "state": "CA",
+        "photo": "https://angular.io/assets/images/tutorials/faa/phil-hearing-IYfp2Ixe9nM-unsplash.jpg",
+        "availableUnits": 5,
+        "wifi": true,
+        "laundry": true
+      },
+      {
+        "id": 7,
+        "name": "Hopeful Housing Solutions",
+        "city": "Oakland",
+        "state": "CA",
+        "photo": "https://angular.io/assets/images/tutorials/faa/r-architecture-GGupkreKwxA-unsplash.jpg",
+        "availableUnits": 2,
+        "wifi": true,
+        "laundry": true
+      },
+      {
+        "id": 8,
+        "name": "Seriously Safe Towns",
+        "city": "Oakland",
+        "state": "CA",
+        "photo": "https://angular.io/assets/images/tutorials/faa/saru-robert-9rP3mxf8qWI-unsplash.jpg",
+        "availableUnits": 10,
+        "wifi": false,
+        "laundry": false
+      },
+      {
+        "id": 9,
+        "name": "Capital Safe Towns",
+        "city": "Portland",
+        "state": "OR",
+        "photo": "https://angular.io/assets/images/tutorials/faa/webaliser-_TPTXZd9mOo-unsplash.jpg",
+        "availableUnits": 6,
+        "wifi": true,
+        "laundry": true
+      }
+  ],
+  "user-api": {},
+  "bookings": [
+      {
+        "apartmentTitle": "Cozy Apartment in City Center",
+        "startDate": "2023-06-15T00:00:00.000Z",
+        "endDate": "2023-06-20T00:00:00.000Z",
+        "location": "New York, NY",
+        "price": 500
+      },
+      {
+        "apartmentTitle": "Modern Loft",
+        "startDate": "2023-07-01T00:00:00.000Z",
+        "endDate": "2023-07-07T00:00:00.000Z",
+        "location": "San Francisco, CA",
+        "price": 700
+      },
+      {
+        "apartmentTitle": "Beachside Bungalow",
+        "startDate": "2023-08-10T00:00:00.000Z",
+        "endDate": "2023-08-15T00:00:00.000Z",
+        "location": "Miami, FL",
+        "price": 450
+      },
+      {
+        "apartmentTitle": "Mountain Cabin Retreat",
+        "startDate": "2023-09-05T00:00:00.000Z",
+        "endDate": "2023-09-12T00:00:00.000Z",
+        "location": "Aspen, CO",
+        "price": 800
+      },
+      {
+        "apartmentTitle": "Downtown Studio Apartment",
+        "startDate": "2023-10-01T00:00:00.000Z",
+        "endDate": "2023-10-10T00:00:00.000Z",
+        "location": "Chicago, IL",
+        "price": 600
+      },
+      {
+        "apartmentTitle": "Luxury Penthouse",
+        "startDate": "2023-11-15T00:00:00.000Z",
+        "endDate": "2023-11-20T00:00:00.000Z",
+        "location": "Los Angeles, CA",
+        "price": 1200
+      },
+      {
+        "apartmentTitle": "Historic Home",
+        "startDate": "2023-12-01T00:00:00.000Z",
+        "endDate": "2023-12-05T00:00:00.000Z",
+        "location": "Charleston, SC",
+        "price": 550
+      },
+      {
+        "apartmentTitle": "Countryside Cottage",
+        "startDate": "2024-01-10T00:00:00.000Z",
+        "endDate": "2024-01-15T00:00:00.000Z",
+        "location": "Nashville, TN",
+        "price": 400
+      },
+      {
+        "apartmentTitle": "Ski Lodge",
+        "startDate": "2024-02-05T00:00:00.000Z",
+        "endDate": "2024-02-12T00:00:00.000Z",
+        "location": "Park City, UT",
+        "price": 900
+      },
+      {
+        "apartmentTitle": "Urban Loft",
+        "startDate": "2024-03-01T00:00:00.000Z",
+        "endDate": "2024-03-07T00:00:00.000Z",
+        "location": "Seattle, WA",
+        "price": 750
+      },
+      {
+        "apartmentTitle": "Historic Home",
+        "startDate": "2023-12-01T00:00:00.000Z",
+        "endDate": "2023-12-05T00:00:00.000Z",
+        "location": "Charleston, SC",
+        "price": 550
+      },
+      {
+        "apartmentTitle": "Countryside Cottage",
+        "startDate": "2024-01-10T00:00:00.000Z",
+        "endDate": "2024-01-15T00:00:00.000Z",
+        "location": "Nashville, TN",
+        "price": 400
+      },
+      {
+        "apartmentTitle": "Ski Lodge",
+        "startDate": "2024-02-05T00:00:00.000Z",
+        "endDate": "2024-02-12T00:00:00.000Z",
+        "location": "Park City, UT",
+        "price": 900
+      },
+      {
+        "apartmentTitle": "Urban Loft",
+        "startDate": "2024-03-01T00:00:00.000Z",
+        "endDate": "2024-03-07T00:00:00.000Z",
+        "location": "Seattle, WA",
+        "price": 750
+      }
+    ]    
+}

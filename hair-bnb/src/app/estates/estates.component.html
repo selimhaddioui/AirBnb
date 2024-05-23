@@ -1,0 +1,13 @@
+<section class="filters">
+    <form>
+        <input type="text" placeholder="Filter by city" #filter (keyup)="filterResults(filter.value)">
+        <input type="text" placeholder="Filter by city" #filter (keyup)="filterResults(filter.value)">
+        <input type="text" placeholder="Filter by city" #filter (keyup)="filterResults(filter.value)">
+    </form>
+</section>
+<section class="results">
+    <app-housing-location
+            *ngFor="let estate of estatesFiltered"
+            [estate]="estate">
+    </app-housing-location>
+</section>

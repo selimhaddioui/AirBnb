@@ -4,15 +4,15 @@
     <menu>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="email" matInput [(ngModel)]="data.email">
+            <input type="email" matInput [(ngModel)]="user.email">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input type="password" matInput [(ngModel)]="data.password">
+            <input type="password" matInput [(ngModel)]="user.password">
         </mat-form-field>
     </menu>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data.email">Validate</button>
+    <button mat-button [mat-dialog-close]="user.email">Validate</button>
 </mat-dialog-actions>

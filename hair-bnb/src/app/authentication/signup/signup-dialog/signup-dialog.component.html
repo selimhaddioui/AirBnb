@@ -1,22 +1,33 @@
+<form [formGroup]="applyForm" (submit)="submitApplication()">
 <h2 mat-dialog-title>Welcome on HairBnb</h2>
 <mat-dialog-content>
     <p>Sign up</p>
-    <menu>
+        <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input type="text" matInput formControlName="firstName" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input type="text" matInput formControlName="lastName" required>
+        </mat-form-field>
+        <br>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input type="email" matInput [(ngModel)]="data.email">
+            <input type="email" matInput formControlName="email" required>
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input type="password" matInput [(ngModel)]="data.password">
+            <input type="password" matInput formControlName="password" required>
         </mat-form-field>
         <br>
-        <mat-button-toggle-group name="userStatus" aria-label="userStatus">
-            <mat-button-toggle value="blue">Lessor</mat-button-toggle>
+        <mat-button-toggle-group formControlName="isLessor">
+            <mat-button-toggle [value]=true>Lessor</mat-button-toggle>
+            <mat-button-toggle [value]=false>Tenant</mat-button-toggle>
         </mat-button-toggle-group>
-    </menu>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data.email">Register</button>
+    <button type="submit" mat-button>Register</button>
 </mat-dialog-actions>
+</form>

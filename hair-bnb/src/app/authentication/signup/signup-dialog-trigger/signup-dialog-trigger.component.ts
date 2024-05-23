@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatInputModule} from "@angular/material/input";
@@ -13,6 +13,7 @@ import {SignupDialogComponent} from "../signup-dialog/signup-dialog.component";
 import {MatIcon, MatIconRegistry} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
 import {DomSanitizer} from "@angular/platform-browser";
+import {User} from "../../../interfaces/user";
 
 
 @Component({
@@ -34,21 +35,22 @@ import {DomSanitizer} from "@angular/platform-browser";
     ],
 })
 export class SignupDialogTriggerComponent {
-    animal!: string;
-    name!: string;
+    @Input() user!: User;
 
     constructor(public dialog: MatDialog, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
         iconRegistry.addSvgIcon('sign-up-icon', sanitizer.bypassSecurityTrustResourceUrl('/assets/register.svg'));
     }
 
     openSignUpDialog(): void {
-        const dialogRef = this.dialog.open(SignupDialogComponent, {
-            data: {name: this.name, animal: this.animal},
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            this.animal = result;
+        this.dialog.open(SignupDialogComponent, {
+            width: '40%',
+            data: {
+                firstName: this.user.firstName,
+                lastName: this.user.lastName,
+                email: this.user.email,
+                password: this.user.password,
+                isLessor: this.user.isLessor
+            }
         });
     }
 }

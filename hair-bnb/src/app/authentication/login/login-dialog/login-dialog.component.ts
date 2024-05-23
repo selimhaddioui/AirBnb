@@ -1,7 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
-  MatDialogRef,
   MatDialogTitle,
   MatDialogContent,
   MatDialogActions,
@@ -11,7 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {LoginDialogData} from "../login-dialog-data";
+import {User} from "../../../interfaces/user";
 
 @Component({
   selector: 'app-login-dialog',
@@ -29,8 +28,5 @@ import {LoginDialogData} from "../login-dialog-data";
   ],
 })
 export class LoginDialogComponent {
-  constructor(
-      public dialogRef: MatDialogRef<LoginDialogComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: LoginDialogData,
-  ) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public user: User) {}
 }
