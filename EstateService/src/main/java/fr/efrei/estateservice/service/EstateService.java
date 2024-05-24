@@ -14,27 +14,22 @@ public class EstateService {
         this.estateRepository = estateRepository;
     }
 
-    public void createEstate(String id) {
-        estateRepository.save(new EstateEntity(id));
+    public EstateEntity createEstate(String id) {
+        if(estateRepository.findById(id).isPresent()){
+            return null;
+        }
+        return estateRepository.save(new EstateEntity(id));
     }
 
     public List<EstateEntity> getEstates() {
         return (List<EstateEntity>) estateRepository.findAll();
     }
 
+    public EstateEntity findEstate(String estateId) {
+        return estateRepository.findById(estateId).orElse(null);
+    }
+
     public void deleteEstate(String id) {
         estateRepository.deleteById(id);
     }
-  
-    public EstateEntity publishEstate(String id) throws Exception {
-        if(estateRepository.findById(id).isPresent()){
-          return null;
-        }
-        estateRepository.save(new EstateEntity(id));
-    }
-
-    public EstateEntity findEstate(String estateId) {
-        return estateRepository.findById(estateId).get();
-    }
-
 }

@@ -1,7 +1,6 @@
 package fr.efrei.estateservice.api;
 
 import fr.efrei.estateservice.core.EstateEntity;
-import fr.efrei.estateservice.dao.EstateRepository;
 import fr.efrei.estateservice.service.EstateService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +16,7 @@ public class EstateController {
     }
 
     @GetMapping
-    public List<EstateEntity> AllEstate() {
+    public List<EstateEntity> allEstates() {
         return estateService.getEstates();
     }
 
@@ -27,14 +26,15 @@ public class EstateController {
     }
   
     @PutMapping("/publish/{id}")
-    public String publishEstate(@PathVariable String id) throws Exception {
-        estateService.publishEstate(id);
-        return "Go to http://localhost:8082/all to see your updated record" ;
+    public EstateResponse publishEstate(@PathVariable String id)  {
+        var estate = estateService.createEstate(id);
+        return estate != null
+                ? new EstateResponse(estate)
+                : null;
     }
   
     @DeleteMapping("/delete/{id}")
-    public String deleteEstate(@PathVariable("id") String id) {
+    public void deleteEstate(@PathVariable("id") String id) {
         estateService.deleteEstate(id);
-        return "Estate" + id + "deleted\nGo to http://localhost:8082/all to see your new record";
     }
 }

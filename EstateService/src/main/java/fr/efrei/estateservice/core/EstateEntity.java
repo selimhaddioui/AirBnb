@@ -11,8 +11,6 @@ public class EstateEntity {
     private String address;
     private int numberOfRooms;
     private int price;
-
-
     private boolean isPublished;
 
     public EstateEntity(String id) {
