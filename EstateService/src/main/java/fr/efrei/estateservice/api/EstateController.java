@@ -4,7 +4,6 @@ import fr.efrei.estateservice.core.EstateEntity;
 import fr.efrei.estateservice.service.EstateService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 @RestController
@@ -28,14 +27,14 @@ public class EstateController {
   
     @PutMapping
     public EstateResponse publishEstate(@RequestBody PublishRequest publishRequest)  {
-        var estate = estateService.createEstate(publishRequest.lessorId(), publishRequest.name(), publishRequest.city(), publishRequest.photo(), publishRequest.state());
+        var estate = estateService.createEstate(publishRequest.userId(), publishRequest.userToken(), publishRequest.name(), publishRequest.city(), publishRequest.photo(), publishRequest.state());
         return estate != null
                 ? new EstateResponse(estate)
-                : null;
+                : new EstateResponse("-1", "-1", null, null, null, null);
     }
   
-    @DeleteMapping("/{id}")
-    public void deleteEstate(@PathVariable("id") String id) {
-        estateService.deleteEstate(id);
+    @DeleteMapping("/{estateId}")
+    public void deleteEstate(@RequestBody DeleteEstateRequest deleteEstateRequest, @PathVariable String estateId) {
+        estateService.deleteEstate(deleteEstateRequest.userId(), deleteEstateRequest.userToken(), estateId);
     }
 }

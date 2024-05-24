@@ -4,5 +4,8 @@
     <p class="listing-location">{{ estate.city}}, {{estate.state }}</p>
     @if(user && user.token !== undefined && !user.isLessor){
         <button mat-stroked-button>Rent</button>
+    } @else if (user && user.token !== undefined && user.isLessor){
+        <button mat-stroked-button color="warn" (click)="onSubmit()">Delete</button>
     }
+
 </section>

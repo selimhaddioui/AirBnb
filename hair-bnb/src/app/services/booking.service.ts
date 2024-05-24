@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class BookingService {
-  private readonly bookingsPath = `${environment.bookingApiUrl}/bookings`;
+  private readonly bookingsPath = `${environment.bookingApiUrl}`;
 
   async getBookings(): Promise<Booking[]> {
     const data = await fetch(this.bookingsPath);
