@@ -1,15 +1,13 @@
 package fr.efrei.BookingService.api;
 
 import fr.efrei.BookingService.services.BookingService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/booking")
+@RequestMapping("/bookings")
 public class BookingController {
-
     private final BookingService bookingService;
 
     public BookingController(BookingService bookingService) {
@@ -17,26 +15,35 @@ public class BookingController {
     }
 
     @GetMapping
-    public void getBookings() {
-        bookingService.getBookings();
+    public List<BookingResponse> getBookings() {
+        return bookingService.getBookings().stream().map(BookingResponse::new).toList();
     }
 
-    @GetMapping("/Message/{bookingId}")
-    public void getBooking(@PathVariable String bookingId) {
-        bookingService.getBooking(bookingId);
+    @GetMapping("{bookingId}")
+    public BookingResponse getBooking(@PathVariable String bookingId) {
+        var booking = bookingService.getBooking(bookingId);
+        return booking != null
+                ? new BookingResponse(booking)
+                : new BookingResponse("-1", null, null, null, null);
+
     }
 
-    @GetMapping("/TestRecord")
-    public BookingResponse testRecord() {
-        return new BookingResponse("monIdDeProprio", "monIdDeLocataire", "monIdDeTenant", "debutResa", "finResa");
-    }
-    @GetMapping("/Cancel/{bookingId}")
+    @GetMapping("/cancel/{bookingId}")
     public void cancel(@PathVariable String bookingId){
         bookingService.cancel(bookingId);
     }
 
-    @GetMapping("/Book/{bookingId}")
-    public void book(@PathVariable String bookingId, String estateId, String tenantId, String bookingStart, String bookingEnd){
-        bookingService.book(bookingId, estateId, tenantId, bookingStart, bookingEnd);
+    @PutMapping("/book")
+    public BookingResponse book(@RequestBody BookingRequest bookingRequest){
+        var booking = bookingService.book(
+                bookingRequest.estateId(),
+                bookingRequest.tenantId(),
+                bookingRequest.tenantToken(),
+                bookingRequest.bookingStart(),
+                bookingRequest.bookingEnd()
+        );
+        return booking != null
+                ? new BookingResponse(booking)
+                : new BookingResponse("-1", null, null, null, null);
     }
 }
