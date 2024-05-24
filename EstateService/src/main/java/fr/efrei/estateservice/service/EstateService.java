@@ -25,10 +25,16 @@ public class EstateService {
     public void deleteEstate(String id) {
         estateRepository.deleteById(id);
     }
+  
+    public EstateEntity publishEstate(String id) throws Exception {
+        if(estateRepository.findById(id).isPresent()){
+          return null;
+        }
+        estateRepository.save(new EstateEntity(id));
+    }
 
     public EstateEntity findEstate(String estateId) {
-
         return estateRepository.findById(estateId).get();
-
     }
+
 }

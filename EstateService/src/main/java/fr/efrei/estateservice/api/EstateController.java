@@ -3,20 +3,15 @@ package fr.efrei.estateservice.api;
 import fr.efrei.estateservice.core.EstateEntity;
 import fr.efrei.estateservice.dao.EstateRepository;
 import fr.efrei.estateservice.service.EstateService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping
-
-
 public class EstateController {
-
     private final EstateService estateService;
+  
     public EstateController(EstateService estateService) {
         this.estateService = estateService;
     }
@@ -26,19 +21,20 @@ public class EstateController {
         return estateService.getEstates();
     }
 
-    @GetMapping
-    public String publishEstate() {
-        return "coucou";
-    }
-
-
-    @GetMapping("/Message/{estateId}")
+    @GetMapping("/{estateId}")
     public EstateEntity getEstate(@PathVariable String estateId) {
         return estateService.findEstate(estateId);
     }
-
-   // @GetMapping("/TestRecord")
-   // public EstateRecord testRecord() {
-   /*     return new EstateRecord("monIdDeProprio", "monIdDeLocataire");
-    }*/
+  
+    @PutMapping("/publish/{id}")
+    public String publishEstate(@PathVariable String id) throws Exception {
+        estateService.publishEstate(id);
+        return "Go to http://localhost:8082/all to see your updated record" ;
+    }
+  
+    @DeleteMapping("/delete/{id}")
+    public String deleteEstate(@PathVariable("id") String id) {
+        estateService.deleteEstate(id);
+        return "Estate" + id + "deleted\nGo to http://localhost:8082/all to see your new record";
+    }
 }
