@@ -153,99 +153,85 @@
       "apartmentTitle": "Cozy Apartment in City Center",
       "startDate": "2023-06-15T00:00:00.000Z",
       "endDate": "2023-06-20T00:00:00.000Z",
-      "location": "New York, NY",
-      "price": 500
+      "location": "New York, NY"
     },
     {
       "apartmentTitle": "Modern Loft",
       "startDate": "2023-07-01T00:00:00.000Z",
       "endDate": "2023-07-07T00:00:00.000Z",
-      "location": "San Francisco, CA",
-      "price": 700
+      "location": "San Francisco, CA"
     },
     {
       "apartmentTitle": "Beachside Bungalow",
       "startDate": "2023-08-10T00:00:00.000Z",
       "endDate": "2023-08-15T00:00:00.000Z",
-      "location": "Miami, FL",
-      "price": 450
+      "location": "Miami, FL"
     },
     {
       "apartmentTitle": "Mountain Cabin Retreat",
       "startDate": "2023-09-05T00:00:00.000Z",
       "endDate": "2023-09-12T00:00:00.000Z",
-      "location": "Aspen, CO",
-      "price": 800
+      "location": "Aspen, CO"
     },
     {
       "apartmentTitle": "Downtown Studio Apartment",
       "startDate": "2023-10-01T00:00:00.000Z",
       "endDate": "2023-10-10T00:00:00.000Z",
-      "location": "Chicago, IL",
-      "price": 600
+      "location": "Chicago, IL"
     },
     {
       "apartmentTitle": "Luxury Penthouse",
       "startDate": "2023-11-15T00:00:00.000Z",
       "endDate": "2023-11-20T00:00:00.000Z",
-      "location": "Los Angeles, CA",
-      "price": 1200
+      "location": "Los Angeles, CA"
     },
     {
       "apartmentTitle": "Historic Home",
       "startDate": "2023-12-01T00:00:00.000Z",
       "endDate": "2023-12-05T00:00:00.000Z",
-      "location": "Charleston, SC",
-      "price": 550
+      "location": "Charleston, SC"
     },
     {
       "apartmentTitle": "Countryside Cottage",
       "startDate": "2024-01-10T00:00:00.000Z",
       "endDate": "2024-01-15T00:00:00.000Z",
-      "location": "Nashville, TN",
-      "price": 400
+      "location": "Nashville, TN"
     },
     {
       "apartmentTitle": "Ski Lodge",
       "startDate": "2024-02-05T00:00:00.000Z",
       "endDate": "2024-02-12T00:00:00.000Z",
-      "location": "Park City, UT",
-      "price": 900
+      "location": "Park City, UT"
     },
     {
       "apartmentTitle": "Urban Loft",
       "startDate": "2024-03-01T00:00:00.000Z",
       "endDate": "2024-03-07T00:00:00.000Z",
-      "location": "Seattle, WA",
-      "price": 750
+      "location": "Seattle, WA"
     },
     {
       "apartmentTitle": "Historic Home",
       "startDate": "2023-12-01T00:00:00.000Z",
       "endDate": "2023-12-05T00:00:00.000Z",
-      "location": "Charleston, SC",
-      "price": 550
+      "location": "Charleston, SC"
     },
     {
       "apartmentTitle": "Countryside Cottage",
       "startDate": "2024-01-10T00:00:00.000Z",
       "endDate": "2024-01-15T00:00:00.000Z",
-      "location": "Nashville, TN",
-      "price": 400
+      "location": "Nashville, TN"
     },
     {
       "apartmentTitle": "Ski Lodge",
       "startDate": "2024-02-05T00:00:00.000Z",
       "endDate": "2024-02-12T00:00:00.000Z",
-      "location": "Park City, UT",
-      "price": 900
+      "location": "Park City, UT"
     },
     {
       "apartmentTitle": "Urban Loft",
       "startDate": "2024-03-01T00:00:00.000Z",
       "endDate": "2024-03-07T00:00:00.000Z",
-      "location": "Seattle, WA",
-      "price": 750
+      "location": "Seattle, WA"
     }
   ]
 }

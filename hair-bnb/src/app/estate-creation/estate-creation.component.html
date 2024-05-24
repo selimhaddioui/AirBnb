@@ -1,14 +1,14 @@
 <div class="add-apartment-container">
     <h2>Add New Apartment</h2>
-    <form  [formGroup]="applyForm" (submit)="onSubmit()">
+    <form [formGroup]="applyForm" (submit)="onSubmit()">
         <mat-form-field appearance="fill">
             <mat-label>Title</mat-label>
-            <input matInput placeholder="Title" name="title" ngModel required>
+            <input matInput placeholder="Title" name="title" required>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Location</mat-label>
-            <input matInput placeholder="Location" name="location" ngModel required>
+            <input matInput placeholder="Location" name="location" required>
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit">Add Apartment</button>

@@ -1,10 +1,9 @@
 export interface Booking {
     bookingId: number;
-    tenantId: string;
+    estateId: string;
     lessorId: string;
-    apartmentTitle: string;
     startDate: Date;
     endDate: Date;
+    apartmentTitle: string;
     location: string;
-    price: number;
 }

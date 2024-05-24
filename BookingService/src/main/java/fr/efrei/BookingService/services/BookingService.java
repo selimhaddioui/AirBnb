@@ -16,12 +16,12 @@ public class BookingService {
     private final BookingRepository bookingRepository;
     private final HttpService httpService;
 
-    public BookingService(BookingRepository dao, HttpService httpService) {
+    public BookingService(BookingRepository bookingRepository, HttpService httpService) {
         this.httpService = httpService;
-        this.bookingRepository = dao;
+        this.bookingRepository = bookingRepository;
     }
 
-    public BookingEntity book(String estateId, String tenantId, String tenantToken, String bookingStart, String bookingEnd) {
+    public BookingEntity book(String estateId, String tenantId, String tenantToken, String bookingStart, String bookingEnd, String apartmentTitle) {
         if(!httpService.isEstateAvailable(estateId, bookingStart, bookingEnd)){
             return null;
         }
@@ -29,7 +29,7 @@ public class BookingService {
             return null;
         }
         String bookingId = generateToken();
-        return bookingRepository.save(new BookingEntity(bookingId, estateId, tenantId, bookingStart, bookingEnd));
+        return bookingRepository.save(new BookingEntity(bookingId, estateId, tenantId, bookingStart, bookingEnd, apartmentTitle));
     }
 
     public void cancel(String bookingId) {

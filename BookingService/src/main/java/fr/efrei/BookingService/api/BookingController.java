@@ -19,31 +19,32 @@ public class BookingController {
         return bookingService.getBookings().stream().map(BookingResponse::new).toList();
     }
 
-    @GetMapping("{bookingId}")
+    @GetMapping("/{bookingId}")
     public BookingResponse getBooking(@PathVariable String bookingId) {
         var booking = bookingService.getBooking(bookingId);
         return booking != null
                 ? new BookingResponse(booking)
-                : new BookingResponse("-1", null, null, null, null);
+                : new BookingResponse("-1", null, null, null, null, null);
 
     }
 
-    @GetMapping("/cancel/{bookingId}")
+    @DeleteMapping("/{bookingId}")
     public void cancel(@PathVariable String bookingId){
         bookingService.cancel(bookingId);
     }
 
-    @PutMapping("/book")
+    @PutMapping
     public BookingResponse book(@RequestBody BookingRequest bookingRequest){
         var booking = bookingService.book(
                 bookingRequest.estateId(),
                 bookingRequest.tenantId(),
                 bookingRequest.tenantToken(),
                 bookingRequest.bookingStart(),
-                bookingRequest.bookingEnd()
+                bookingRequest.bookingEnd(),
+                bookingRequest.apartmentTitle()
         );
         return booking != null
                 ? new BookingResponse(booking)
-                : new BookingResponse("-1", null, null, null, null);
+                : new BookingResponse("-1", null, null, null, null, null);
     }
 }

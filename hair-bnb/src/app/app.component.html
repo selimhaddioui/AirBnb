@@ -13,7 +13,6 @@
             }
             @if(user && user.isLessor){
                 <mat-icon svgIcon="plus-icon" matTooltip="New estate" id="new-estate-icon" [routerLink]="['/create-estate']"></mat-icon>
-                <mat-icon svgIcon="estates-icon" matTooltip="Estates" id="estates-icon"></mat-icon>
             }
             @if(!user || user.token === undefined){
                 <app-signup-dialog-trigger [user]="user"></app-signup-dialog-trigger>
