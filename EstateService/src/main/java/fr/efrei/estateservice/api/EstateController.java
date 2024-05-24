@@ -5,9 +5,10 @@ import fr.efrei.estateservice.service.EstateService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @RestController
-@RequestMapping
+@RequestMapping("/estates")
 public class EstateController {
     private final EstateService estateService;
   
@@ -16,8 +17,8 @@ public class EstateController {
     }
 
     @GetMapping
-    public List<EstateEntity> allEstates() {
-        return estateService.getEstates();
+    public Stream<EstateResponse> allEstates() {
+        return estateService.getEstates().stream().map(EstateResponse::new);
     }
 
     @GetMapping("/{estateId}")
@@ -25,15 +26,15 @@ public class EstateController {
         return estateService.findEstate(estateId);
     }
   
-    @PutMapping("/publish/{id}")
-    public EstateResponse publishEstate(@PathVariable String id)  {
-        var estate = estateService.createEstate(id);
+    @PutMapping
+    public EstateResponse publishEstate(@RequestBody PublishRequest publishRequest)  {
+        var estate = estateService.createEstate(publishRequest.lessorId(), publishRequest.name(), publishRequest.city(), publishRequest.photo(), publishRequest.state());
         return estate != null
                 ? new EstateResponse(estate)
                 : null;
     }
   
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEstate(@PathVariable("id") String id) {
         estateService.deleteEstate(id);
     }

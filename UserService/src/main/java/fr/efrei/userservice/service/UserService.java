@@ -52,12 +52,6 @@ public class UserService {
         return userRepository.findById(userId).orElse(null);
     }
 
-    private String generateToken() {
-        byte[] randomBytes = new byte[24];
-        secureRandom.nextBytes(randomBytes);
-        return base64Encoder.encodeToString(randomBytes);
-    }
-
     public UserEntity login(String email, String password) {
         if(email == null) {
             return null;
@@ -86,5 +80,11 @@ public class UserService {
 
     private static String hashPassword(String password) {
         return passwordEncoder.encode(password);
+    }
+
+    private String generateToken() {
+        byte[] randomBytes = new byte[24];
+        secureRandom.nextBytes(randomBytes);
+        return base64Encoder.encodeToString(randomBytes);
     }
 }

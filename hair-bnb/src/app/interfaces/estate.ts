@@ -5,7 +5,4 @@ export interface Estate {
     city: string;
     state: string;
     photo: string;
-    availableUnits: number;
-    wifi: boolean;
-    laundry: boolean;
 }
