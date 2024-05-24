@@ -24,7 +24,7 @@ public class BookingController {
         var booking = bookingService.getBooking(bookingId);
         return booking != null
                 ? new BookingResponse(booking)
-                : new BookingResponse("-1", null, null, null, null, null);
+                : new BookingResponse("-1", "-1", "-1", null, null, null);
 
     }
 
