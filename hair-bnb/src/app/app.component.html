@@ -8,7 +8,7 @@
             </div>
         </a>
         <div class="icons">
-            @if(user && user !== undefined && user.token !== undefined){
+            @if(user && user.token !== undefined){
                 <mat-icon svgIcon="rents-icon" matTooltip="Reservations" id="rents-icon" [routerLink]="['/reservations']"></mat-icon>
             }
             @if(user && user.isLessor){

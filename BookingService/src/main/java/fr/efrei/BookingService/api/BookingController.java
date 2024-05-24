@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/booking")
-/* 8081 */
-
 public class BookingController {
 
     private final BookingService bookingService;

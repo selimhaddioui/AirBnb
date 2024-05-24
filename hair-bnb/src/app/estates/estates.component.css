@@ -17,8 +17,9 @@ input[type="text"] {
     padding: 10px;
     border-radius: 8px;
     margin-right: 4px;
+    width: 40rem;
+    text-align: center;
     display: inline-block;
-    width: 20rem;
     align-self: center;
 }
 
@@ -28,6 +29,13 @@ button {
     background: var(--primary-color);
     color: white;
     border-radius: 8px;
+}
+
+h3{
+    text-align: center;
+    align-self: center;
+    margin: 40px;
+    font-weight: bold;
 }
 
 @media (min-width: 500px) and (max-width: 768px) {

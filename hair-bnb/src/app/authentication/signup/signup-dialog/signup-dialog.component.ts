@@ -1,16 +1,14 @@
-import {Component, Inject, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
-    MatDialogRef,
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose, MAT_DIALOG_DATA,
+    MatDialogClose,
 } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {User} from "../../../interfaces/user";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {UserService} from "../../../services/user.service";
@@ -39,16 +37,8 @@ import {ServiceResponse} from "../../../interfaces/service.response";
 export class SignupDialogComponent {
     userService = inject(UserService);
     serviceResponse: ServiceResponse = {success: true, message: ''};
-    private readonly userDefault: User = {
-        id: '',
-        token: undefined,
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        isLessor: false
-    }
-    applyForm = new FormGroup({
+
+    userCreationForm = new FormGroup({
         firstName: new FormControl(''),
         lastName: new FormControl(''),
         email: new FormControl(''),
@@ -56,24 +46,27 @@ export class SignupDialogComponent {
         isLessor: new FormControl(false),
     });
 
-    constructor(
-        public dialogRef: MatDialogRef<SignupDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public user: User,
-    ) {
-    }
+    constructor() {}
 
-    submitApplication() {
-        this.serviceResponse = this.userService.createUser(
-            this.applyForm.value.email ?? this.userDefault.email,
-            this.applyForm.value.password ?? this.userDefault.password,
-            this.applyForm.value.firstName ?? this.userDefault.firstName,
-            this.applyForm.value.lastName ?? this.userDefault.lastName,
-            this.applyForm.value.isLessor ?? this.userDefault.isLessor
-        );
-        if(this.serviceResponse.success) {
-            window.location.reload();
-            alert(this.serviceResponse.message);
-        }
-        // this.userToken = this.userService.createUser(this.user.id);
+    createUser() {
+        this.userService.createUser(
+            this.userCreationForm.value.email ?? '',
+            this.userCreationForm.value.password ?? '',
+            this.userCreationForm.value.firstName ?? '',
+            this.userCreationForm.value.lastName ?? '',
+            this.userCreationForm.value.isLessor ?? false
+        ).subscribe({
+            next: (response: ServiceResponse) => {
+                this.serviceResponse = response;
+                if (response.success) {
+                    window.location.reload();
+                }
+            },
+            error: (error) => {
+                console.error('Unexpected error occurred', error);
+                this.serviceResponse.message = 'Unexpected error occurred. Please try again.';
+                this.serviceResponse.success = false;
+            }
+        });
     }
 }

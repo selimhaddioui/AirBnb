@@ -2,5 +2,7 @@
     <img class="listing-photo" [src]="estate.photo" alt="Exterior photo of {{estate.name}}">
     <h2 class="listing-heading">{{ estate.name }}</h2>
     <p class="listing-location">{{ estate.city}}, {{estate.state }}</p>
-    <button mat-stroked-button>Rent</button>
+    @if(user && user.token !== undefined && !user.isLessor){
+        <button mat-stroked-button>Rent</button>
+    }
 </section>

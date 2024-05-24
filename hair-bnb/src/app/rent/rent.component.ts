@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {Estate} from "../interfaces/estate";
 import {Booking} from "../interfaces/booking";
 import {CurrencyPipe, DatePipe, NgForOf} from "@angular/common";
 import {MatLine} from "@angular/material/core";

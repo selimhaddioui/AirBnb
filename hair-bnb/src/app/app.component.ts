@@ -1,4 +1,4 @@
-import {Component, inject, Inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
 import {MatButtonModule} from "@angular/material/button";
 import {NgOptimizedImage} from "@angular/common";
@@ -9,6 +9,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {MatTooltip} from "@angular/material/tooltip";
 import {User} from "./interfaces/user";
 import {UserService} from "./services/user.service";
+import {MatCardTitle} from "@angular/material/card";
 
 const iconBaseUrl = '/assets/';
 
@@ -26,21 +27,20 @@ const iconBaseUrl = '/assets/';
         LoginDialogTriggerComponent,
         SignupDialogTriggerComponent,
         MatIcon,
-        MatTooltip
+        MatTooltip,
+        MatCardTitle
     ]
 })
 export class AppComponent {
-    userService = inject(UserService);
     title = 'hair-bnb';
-    user: User = JSON.parse(sessionStorage.getItem('user') || '{}');
+    userService = inject(UserService);
+    user: User = this.userService.getUserInSession();
     constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
         iconRegistry.addSvgIcon('plus-icon', sanitizer.bypassSecurityTrustResourceUrl(iconBaseUrl + 'filling_system.svg'));
         iconRegistry.addSvgIcon('estates-icon', sanitizer.bypassSecurityTrustResourceUrl(iconBaseUrl + 'estates.svg'));
         iconRegistry.addSvgIcon('rents-icon', sanitizer.bypassSecurityTrustResourceUrl(iconBaseUrl + 'rents.svg'));
         iconRegistry.addSvgIcon('logout-icon', sanitizer.bypassSecurityTrustResourceUrl(iconBaseUrl + 'logout.svg'));
     }
-
-    protected readonly sessionStorage = sessionStorage;
 
     signOff() {
         this.userService.signOff();

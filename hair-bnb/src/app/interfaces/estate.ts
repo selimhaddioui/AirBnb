@@ -1,5 +1,6 @@
 export interface Estate {
-    id: number;
+    estateId: string;
+    lessorId: string;
     name: string;
     city: string;
     state: string;

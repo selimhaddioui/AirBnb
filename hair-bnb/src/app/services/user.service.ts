@@ -3,73 +3,59 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {User} from "../interfaces/user";
 import {ServiceResponse} from "../interfaces/service.response";
+import {catchError, map, Observable, of} from "rxjs";
+
+interface AuthRequest {
+    email: string;
+    password: string;
+}
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    private readonly usersPath = `${environment.userApiUrl}/users`;
+    private readonly usersPath = environment.userApiUrl;
 
-    createUser(email: string, password: string, firstName: string, lastName: string, isLessor: boolean): ServiceResponse {
+    createUser(email: string, password: string, firstName: string, lastName: string, isLessor: boolean): Observable<ServiceResponse> {
         if (email === '' || password === '' || firstName === '' || lastName === '') {
-            return {success: false, message: 'Please fill in all fields'};
+            return of({success: false, message: 'Please fill in all fields'});
         }
-        let user: User = {
-            id: '',
-            token: undefined,
-            firstName: '',
-            lastName: '',
-            isLessor: false,
-            email: '',
-            password: ''
-        };
-        // send put request
-        // this.http.put<User>(this.usersPath, { id }).subscribe({
-        //   next: (data => {
-        //     user = data;
-        //   })
-        // });
-        // return user.id === '' ? undefined : user;
-        if (email !== 'success') {
-            return {success: false, message: 'Email already used'};
-        }
-        user = {
-            id: '1',
-            token: 'defined',
-            firstName: firstName,
-            lastName: lastName,
-            isLessor: isLessor,
-            email: email,
-            password: password
-        }
-        this.setUserInSession(user);
-        return {success: true, message: 'User created'};
+        const newUser: Partial<User> = {email, password, firstName, lastName, isLessor};
+        return this.http.put<User>(this.usersPath, newUser).pipe(map(user => {
+                if (user.id === '-1') {
+                    return {success: false, message: 'Email already used'};
+                }
+                this.setUserInSession(user);
+                return {success: true, message: 'User created'};
+            }),
+            catchError(() => {
+                return of({success: false, message: 'An error occurred while creating the user'});
+            }));
     }
 
-    signIn(email: string, password: string): ServiceResponse {
+    signIn(email: string, password: string): Observable<ServiceResponse> {
         if (email === '' || password === '') {
-            return {success: false, message: 'Please fill in all fields'};
+            return of({success: false, message: 'Please fill in all fields'});
         }
-        let user: User = {
-            id: '17',
-            token: "mockSignIn",
-            firstName: 'selim',
-            lastName: 'haddioui',
-            isLessor: false,
-            email: '',
-            password: ''
-        };
-        // get user from db using both email and password
-        // this.http.get<User>(this.usersPath, { email, password }).subscribe({
-        //     next: (data => {
-        //         user = data;
-        //     })
-        // });
-        if(user.email === 'success') {
-            this.setUserInSession(user);
-            return {success: true, message: 'User created'};
+        const authBodyRequest: Partial<AuthRequest> = {email, password};
+        return this.http.put<User>(`${this.usersPath}/auth`, authBodyRequest).pipe(map(user => {
+                if (user.id === '-1') {
+                    return {success: false, message: 'Wrong credentials'};
+                }
+                this.setUserInSession(user);
+                return {success: true, message: 'User authenticated'};
+            }),
+            catchError(() => {
+                return of({success: false, message: 'An error occurred while trying to log'});
+            }));
+    }
+
+    signOff() {
+        if (!this.getUserInSession()) {
+            return;
         }
-        return {success: false, message: 'Wrong credentials'};
+        fetch(`${this.usersPath}/logout/${this.getUserInSession().id}`);
+        sessionStorage.removeItem('user');
     }
 
     setUserInSession(user: User) {
@@ -81,10 +67,5 @@ export class UserService {
     }
 
     constructor(private http: HttpClient) {
-    }
-
-    signOff() {
-        // remove user token from db
-        sessionStorage.removeItem('user');
     }
 }

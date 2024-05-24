@@ -1,7 +1,10 @@
-<form [formGroup]="applyForm" (submit)="submitApplication()">
-<h2 mat-dialog-title>Welcome on HairBnb</h2>
-<mat-dialog-content>
-    <p>Sign up</p>
+<form [formGroup]="userCreationForm" (submit)="createUser()">
+    <h2 mat-dialog-title>Welcome on HairBnb</h2>
+    <mat-dialog-content>
+        <p>Sign up</p>
+        @if (!this.serviceResponse.success) {
+            <mat-error>{{ this.serviceResponse.message }}</mat-error>
+        }
         <mat-form-field>
             <mat-label>First name</mat-label>
             <input type="text" matInput formControlName="firstName" required>
@@ -26,8 +29,8 @@
             <mat-button-toggle [value]=true>Lessor</mat-button-toggle>
             <mat-button-toggle [value]=false>Tenant</mat-button-toggle>
         </mat-button-toggle-group>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button type="submit" mat-button>Register</button>
-</mat-dialog-actions>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button type="submit" mat-button>Register</button>
+    </mat-dialog-actions>
 </form>

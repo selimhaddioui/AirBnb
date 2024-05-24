@@ -13,7 +13,7 @@ export class EstateService {
     return await data.json() ?? [];
   }
 
-  async getEstateById(id: number): Promise<Estate | undefined> {
+  async getEstateById(id: string): Promise<Estate | undefined> {
     const data = await fetch(`${this.locationsPath}/${id}`);
     return await data.json() ?? {};
   }
