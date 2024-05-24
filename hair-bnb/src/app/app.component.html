@@ -1,0 +1,29 @@
+<main>
+    <header>
+        <a [routerLink]="['/']">
+            <div class="brand-logo">
+                <img class="brand-logo-picture" ngSrc="/assets/house_searching.svg" priority alt="logo" aria-hidden="true"
+                     height="453" width="909">
+                <h1 class="brand-logo-title">HairBnb</h1>
+            </div>
+        </a>
+        <div class="icons">
+            @if(user && user.token !== undefined){
+                <mat-icon svgIcon="rents-icon" matTooltip="Reservations" id="rents-icon" [routerLink]="['/reservations']"></mat-icon>
+            }
+            @if(user && user.isLessor){
+                <mat-icon svgIcon="plus-icon" matTooltip="New estate" id="new-estate-icon" [routerLink]="['/create-estate']"></mat-icon>
+                <mat-icon svgIcon="estates-icon" matTooltip="Estates" id="estates-icon"></mat-icon>
+            }
+            @if(!user || user.token === undefined){
+                <app-signup-dialog-trigger [user]="user"></app-signup-dialog-trigger>
+                <app-login-dialog-trigger></app-login-dialog-trigger>
+            }@else{
+                <mat-icon svgIcon="logout-icon" matTooltip="Log out" id="logout-icon" (click)="signOff()"></mat-icon>
+            }
+        </div>
+    </header>
+    <section class="content">
+        <router-outlet/>
+    </section>
+</main>

@@ -1,0 +1,9 @@
+<div class="reservations-container">
+    <h2>Your Reservations</h2>
+    <mat-list *ngIf="bookings && bookings.length; else noReservations">
+        <app-rent *ngFor="let booking of bookings" [booking]="booking"/>
+    </mat-list>
+    <ng-template #noReservations>
+        <p>You have no reservations.</p>
+    </ng-template>
+</div>

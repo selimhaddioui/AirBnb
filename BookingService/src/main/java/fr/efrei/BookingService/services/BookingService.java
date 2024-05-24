@@ -1,17 +1,34 @@
 package fr.efrei.BookingService.services;
 
 import fr.efrei.BookingService.core.BookingEntity;
+import fr.efrei.BookingService.dao.BookingDAO;
 
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
 public class BookingService {
-    public BookingEntity book(String estateId, String tenantId) {
-        /* Check for availability */
-        /* Create a booking from DAO */
-        /* return it */
-        return new BookingEntity("bookingId", estateId, tenantId);
+
+    private final BookingDAO dao;
+    public BookingService(BookingDAO dao) {
+        this.dao = dao;
+    }
+
+    public void book(String bookingId, String estateId, String tenantId, String bookingStart, String bookingEnd) {
+        dao.save(new BookingEntity(bookingId, estateId, tenantId, bookingStart, bookingEnd));
     }
 
     public void cancel(String bookingId) {
-        /* Check for existence */
-        /* Delete the booking from DAO */
+        if(dao.findById(bookingId).isPresent()){
+            dao.deleteById(bookingId);
+        }
+    }
+
+    public List<BookingEntity> getBookings(){
+        return (List<BookingEntity>) dao.findAll();
+    }
+
+    public void getBooking(String bookingId){
+        dao.findById(bookingId);
     }
 }

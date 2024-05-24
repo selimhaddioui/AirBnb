@@ -1,0 +1,23 @@
+<form [formGroup]="userLoginForm" (submit)="logUser()">
+    <h2 mat-dialog-title>Welcome on HairBnb</h2>
+    <mat-dialog-content>
+        <p>Sign in</p>
+        @if (!this.serviceResponse.success) {
+            <mat-error>{{ this.serviceResponse.message }}</mat-error>
+        }
+        <menu>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+        </menu>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button type="submit" mat-button>Validate</button>
+    </mat-dialog-actions>
+</form>

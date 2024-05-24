@@ -1,0 +1,15 @@
+.checkbox-wrapper > mat-checkbox{
+    align-self: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-button-toggle-group {
+    width: 40%;
+}
+
+mat-button-toggle {
+    width: 100%;
+}
