@@ -1,4 +1,4 @@
-package fr.efrei.EstateService.API;
+package fr.efrei.estateservice.api;
 
 import fr.efrei.estateservice.core.EstateEntity;
 import fr.efrei.estateservice.dao.EstateRepository;
@@ -37,8 +37,8 @@ public class EstateController {
         return estateService.findEstate(estateId);
     }
 
-    @GetMapping("/TestRecord")
-    public EstateRecord testRecord() {
-        return new EstateRecord("monIdDeProprio", "monIdDeLocataire");
-    }
+   // @GetMapping("/TestRecord")
+   // public EstateRecord testRecord() {
+   /*     return new EstateRecord("monIdDeProprio", "monIdDeLocataire");
+    }*/
 }
