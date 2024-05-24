@@ -25,4 +25,10 @@ public class EstateService {
     public void deleteEstate(String id) {
         estateRepository.deleteById(id);
     }
+
+    public EstateEntity findEstate(String estateId) {
+
+        return estateRepository.findById(estateId).get();
+
+    }
 }

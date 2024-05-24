@@ -8,6 +8,10 @@ public class EstateEntity {
 
     @Id
     private String id;
+    private String address;
+    private int numberOfRooms;
+    private int price;
+
 
     public EstateEntity(String id) {
         this.id = id;
