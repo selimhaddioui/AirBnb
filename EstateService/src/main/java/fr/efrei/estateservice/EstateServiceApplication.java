@@ -1,4 +1,4 @@
-package fr.efrei.EstateService;
+package fr.efrei.estateservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
